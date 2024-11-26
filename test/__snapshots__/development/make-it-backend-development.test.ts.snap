@@ -1,0 +1,5304 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot Test 1`] = `
+{
+  "Mappings": {
+    "LatestNodeRuntimeMap": {
+      "af-south-1": {
+        "value": "nodejs20.x",
+      },
+      "ap-east-1": {
+        "value": "nodejs20.x",
+      },
+      "ap-northeast-1": {
+        "value": "nodejs20.x",
+      },
+      "ap-northeast-2": {
+        "value": "nodejs20.x",
+      },
+      "ap-northeast-3": {
+        "value": "nodejs20.x",
+      },
+      "ap-south-1": {
+        "value": "nodejs20.x",
+      },
+      "ap-south-2": {
+        "value": "nodejs20.x",
+      },
+      "ap-southeast-1": {
+        "value": "nodejs20.x",
+      },
+      "ap-southeast-2": {
+        "value": "nodejs20.x",
+      },
+      "ap-southeast-3": {
+        "value": "nodejs20.x",
+      },
+      "ap-southeast-4": {
+        "value": "nodejs20.x",
+      },
+      "ap-southeast-5": {
+        "value": "nodejs20.x",
+      },
+      "ap-southeast-7": {
+        "value": "nodejs20.x",
+      },
+      "ca-central-1": {
+        "value": "nodejs20.x",
+      },
+      "ca-west-1": {
+        "value": "nodejs20.x",
+      },
+      "cn-north-1": {
+        "value": "nodejs18.x",
+      },
+      "cn-northwest-1": {
+        "value": "nodejs18.x",
+      },
+      "eu-central-1": {
+        "value": "nodejs20.x",
+      },
+      "eu-central-2": {
+        "value": "nodejs20.x",
+      },
+      "eu-isoe-west-1": {
+        "value": "nodejs18.x",
+      },
+      "eu-north-1": {
+        "value": "nodejs20.x",
+      },
+      "eu-south-1": {
+        "value": "nodejs20.x",
+      },
+      "eu-south-2": {
+        "value": "nodejs20.x",
+      },
+      "eu-west-1": {
+        "value": "nodejs20.x",
+      },
+      "eu-west-2": {
+        "value": "nodejs20.x",
+      },
+      "eu-west-3": {
+        "value": "nodejs20.x",
+      },
+      "il-central-1": {
+        "value": "nodejs20.x",
+      },
+      "me-central-1": {
+        "value": "nodejs20.x",
+      },
+      "me-south-1": {
+        "value": "nodejs20.x",
+      },
+      "mx-central-1": {
+        "value": "nodejs20.x",
+      },
+      "sa-east-1": {
+        "value": "nodejs20.x",
+      },
+      "us-east-1": {
+        "value": "nodejs20.x",
+      },
+      "us-east-2": {
+        "value": "nodejs20.x",
+      },
+      "us-gov-east-1": {
+        "value": "nodejs18.x",
+      },
+      "us-gov-west-1": {
+        "value": "nodejs18.x",
+      },
+      "us-iso-east-1": {
+        "value": "nodejs18.x",
+      },
+      "us-iso-west-1": {
+        "value": "nodejs18.x",
+      },
+      "us-isob-east-1": {
+        "value": "nodejs18.x",
+      },
+      "us-west-1": {
+        "value": "nodejs20.x",
+      },
+      "us-west-2": {
+        "value": "nodejs20.x",
+      },
+    },
+  },
+  "Outputs": {
+    "ApiGatewayRestApiEndpoint91BA3788": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "ApiGatewayRestApi02C6E081",
+            },
+            ".execute-api.",
+            {
+              "Ref": "AWS::Region",
+            },
+            ".",
+            {
+              "Ref": "AWS::URLSuffix",
+            },
+            "/",
+            {
+              "Ref": "ApiGatewayRestApiDeploymentStagedevelopment7F493B75",
+            },
+            "/",
+          ],
+        ],
+      },
+    },
+    "SummarizeApiSummarizeRestApiEndpointCC970FC4": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "SummarizeApiSummarizeRestApi08907D9F",
+            },
+            ".execute-api.",
+            {
+              "Ref": "AWS::Region",
+            },
+            ".",
+            {
+              "Ref": "AWS::URLSuffix",
+            },
+            "/",
+            {
+              "Ref": "SummarizeApiSummarizeRestApiDeploymentStageprodA67406ED",
+            },
+            "/",
+          ],
+        ],
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "ApiGatewayRestApi02C6E081": {
+      "Properties": {
+        "Description": "API for make it application",
+        "Name": "make-it-development-rest-api",
+      },
+      "Type": "AWS::ApiGateway::RestApi",
+    },
+    "ApiGatewayRestApiAccount24319CF9": {
+      "DeletionPolicy": "Retain",
+      "DependsOn": [
+        "ApiGatewayRestApi02C6E081",
+      ],
+      "Properties": {
+        "CloudWatchRoleArn": {
+          "Fn::GetAtt": [
+            "ApiGatewayRestApiCloudWatchRoleEC5D36A0",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::ApiGateway::Account",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "ApiGatewayRestApiAuthorizerFDD36FC4": {
+      "Properties": {
+        "IdentitySource": "method.request.header.Authorization",
+        "Name": "make-it-development-cognito-authorizer",
+        "ProviderARNs": [
+          {
+            "Fn::GetAtt": [
+              "CognitoAuthUserPool9F7F9231",
+              "Arn",
+            ],
+          },
+        ],
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+        "Type": "COGNITO_USER_POOLS",
+      },
+      "Type": "AWS::ApiGateway::Authorizer",
+    },
+    "ApiGatewayRestApiCloudWatchRoleEC5D36A0": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "ApiGatewayRestApiDeploymentFBC65AB482831ebe7070fb083f280ac89c5dd4ce": {
+      "DependsOn": [
+        "ApiGatewayRestApiapicreatecognitouserPOSTC0DC4302",
+        "ApiGatewayRestApiapicreatecognitouserFBF46E99",
+        "ApiGatewayRestApiapigeneratesessiontitlePOST6DABA805",
+        "ApiGatewayRestApiapigeneratesessiontitle2ED884AE",
+        "ApiGatewayRestApiapiC28A26FD",
+        "ApiGatewayRestApiapisendsummaryPOST34AF62F1",
+        "ApiGatewayRestApiapisendsummary198E7DF0",
+        "ApiGatewayRestApiapisessionsessionIdGETE62CD6B5",
+        "ApiGatewayRestApiapisessionsessionId53BA38F1",
+        "ApiGatewayRestApiapisessionGETE9E68486",
+        "ApiGatewayRestApiapisession7BB612AC",
+        "ApiGatewayRestApiapisummarizePOSTEB02D8AA",
+        "ApiGatewayRestApiapisummarizeB29BD77E",
+        "ApiGatewayRestApiapiuseruserIdGETEF7D679B",
+        "ApiGatewayRestApiapiuseruserIdPUT9878C6AB",
+        "ApiGatewayRestApiapiuseruserId20FAECE7",
+        "ApiGatewayRestApiapiuser3B4714FB",
+      ],
+      "Properties": {
+        "Description": "API for make it application",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Deployment",
+    },
+    "ApiGatewayRestApiDeploymentStagedevelopment7F493B75": {
+      "DependsOn": [
+        "ApiGatewayRestApiAccount24319CF9",
+      ],
+      "Properties": {
+        "DeploymentId": {
+          "Ref": "ApiGatewayRestApiDeploymentFBC65AB482831ebe7070fb083f280ac89c5dd4ce",
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+        "StageName": "development",
+        "TracingEnabled": true,
+      },
+      "Type": "AWS::ApiGateway::Stage",
+    },
+    "ApiGatewayRestApiapiC28A26FD": {
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ApiGatewayRestApi02C6E081",
+            "RootResourceId",
+          ],
+        },
+        "PathPart": "api",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "ApiGatewayRestApiapicreatecognitouserFBF46E99": {
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayRestApiapiC28A26FD",
+        },
+        "PathPart": "create-cognito-user",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "ApiGatewayRestApiapicreatecognitouserPOSTC0DC4302": {
+      "Properties": {
+        "AuthorizationType": "COGNITO_USER_POOLS",
+        "AuthorizerId": {
+          "Ref": "ApiGatewayRestApiAuthorizerFDD36FC4",
+        },
+        "HttpMethod": "POST",
+        "Integration": {
+          "Credentials": {
+            "Fn::GetAtt": [
+              "CreateCognitoUserApiApiGatewaySqsRole37133EE8",
+              "Arn",
+            ],
+          },
+          "IntegrationHttpMethod": "POST",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "204",
+            },
+            {
+              "ResponseTemplates": {
+                "application/json": "{"message": "Internal Server Error"}",
+              },
+              "SelectionPattern": "5\\d{2}",
+              "StatusCode": "500",
+            },
+          ],
+          "RequestParameters": {
+            "integration.request.header.Content-Type": "'application/x-www-form-urlencoded'",
+          },
+          "RequestTemplates": {
+            "application/json": "Action=SendMessage&MessageBody=$util.urlEncode($input.body)",
+          },
+          "Type": "AWS",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:ap-northeast-1:sqs:path/",
+                {
+                  "Ref": "AWS::AccountId",
+                },
+                "/",
+                {
+                  "Fn::GetAtt": [
+                    "CreateCognitoUserApiCreateCognitoUserQueue24E33336",
+                    "QueueName",
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "MethodResponses": [
+          {
+            "StatusCode": "204",
+          },
+          {
+            "StatusCode": "500",
+          },
+        ],
+        "ResourceId": {
+          "Ref": "ApiGatewayRestApiapicreatecognitouserFBF46E99",
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "ApiGatewayRestApiapigeneratesessiontitle2ED884AE": {
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayRestApiapiC28A26FD",
+        },
+        "PathPart": "generate-session-title",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "ApiGatewayRestApiapigeneratesessiontitlePOST6DABA805": {
+      "Properties": {
+        "AuthorizationType": "COGNITO_USER_POOLS",
+        "AuthorizerId": {
+          "Ref": "ApiGatewayRestApiAuthorizerFDD36FC4",
+        },
+        "HttpMethod": "POST",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region",
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "GenerateSessionTitleApiGenerateSessionTitle1E0B67E0",
+                    "Arn",
+                  ],
+                },
+                "/invocations",
+              ],
+            ],
+          },
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayRestApiapigeneratesessiontitle2ED884AE",
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "ApiGatewayRestApiapigeneratesessiontitlePOSTApiPermissionMyTestStackApiGatewayRestApi9C1D269EPOSTapigeneratesessiontitle6AAB0153": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "GenerateSessionTitleApiGenerateSessionTitle1E0B67E0",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi02C6E081",
+              },
+              "/",
+              {
+                "Ref": "ApiGatewayRestApiDeploymentStagedevelopment7F493B75",
+              },
+              "/POST/api/generate-session-title",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "ApiGatewayRestApiapigeneratesessiontitlePOSTApiPermissionTestMyTestStackApiGatewayRestApi9C1D269EPOSTapigeneratesessiontitleAAD65C56": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "GenerateSessionTitleApiGenerateSessionTitle1E0B67E0",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi02C6E081",
+              },
+              "/test-invoke-stage/POST/api/generate-session-title",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "ApiGatewayRestApiapisendsummary198E7DF0": {
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayRestApiapiC28A26FD",
+        },
+        "PathPart": "send-summary",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "ApiGatewayRestApiapisendsummaryPOST34AF62F1": {
+      "Properties": {
+        "AuthorizationType": "COGNITO_USER_POOLS",
+        "AuthorizerId": {
+          "Ref": "ApiGatewayRestApiAuthorizerFDD36FC4",
+        },
+        "HttpMethod": "POST",
+        "Integration": {
+          "Credentials": {
+            "Fn::GetAtt": [
+              "SendSummaryApiApiGatewaySqsRoleEABE1406",
+              "Arn",
+            ],
+          },
+          "IntegrationHttpMethod": "POST",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "204",
+            },
+            {
+              "ResponseTemplates": {
+                "application/json": "{"message": "Internal Server Error"}",
+              },
+              "SelectionPattern": "5\\d{2}",
+              "StatusCode": "500",
+            },
+          ],
+          "RequestParameters": {
+            "integration.request.header.Content-Type": "'application/x-www-form-urlencoded'",
+          },
+          "RequestTemplates": {
+            "application/json": "Action=SendMessage&MessageBody=$util.urlEncode($input.body)",
+          },
+          "Type": "AWS",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:ap-northeast-1:sqs:path/",
+                {
+                  "Ref": "AWS::AccountId",
+                },
+                "/",
+                {
+                  "Fn::GetAtt": [
+                    "SendSummaryApiSendSummaryQueueECF57862",
+                    "QueueName",
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "MethodResponses": [
+          {
+            "StatusCode": "204",
+          },
+          {
+            "StatusCode": "500",
+          },
+        ],
+        "ResourceId": {
+          "Ref": "ApiGatewayRestApiapisendsummary198E7DF0",
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "ApiGatewayRestApiapisession7BB612AC": {
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayRestApiapiC28A26FD",
+        },
+        "PathPart": "session",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "ApiGatewayRestApiapisessionGETApiPermissionMyTestStackApiGatewayRestApi9C1D269EGETapisession1130D2F9": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "FetchSessionsApiFetchSessionsLambdaHandler15C7DA5B",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi02C6E081",
+              },
+              "/",
+              {
+                "Ref": "ApiGatewayRestApiDeploymentStagedevelopment7F493B75",
+              },
+              "/GET/api/session",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "ApiGatewayRestApiapisessionGETApiPermissionTestMyTestStackApiGatewayRestApi9C1D269EGETapisession4EA9CE4C": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "FetchSessionsApiFetchSessionsLambdaHandler15C7DA5B",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi02C6E081",
+              },
+              "/test-invoke-stage/GET/api/session",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "ApiGatewayRestApiapisessionGETE9E68486": {
+      "Properties": {
+        "AuthorizationType": "COGNITO_USER_POOLS",
+        "AuthorizerId": {
+          "Ref": "ApiGatewayRestApiAuthorizerFDD36FC4",
+        },
+        "HttpMethod": "GET",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region",
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "FetchSessionsApiFetchSessionsLambdaHandler15C7DA5B",
+                    "Arn",
+                  ],
+                },
+                "/invocations",
+              ],
+            ],
+          },
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayRestApiapisession7BB612AC",
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "ApiGatewayRestApiapisessionsessionId53BA38F1": {
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayRestApiapisession7BB612AC",
+        },
+        "PathPart": "{sessionId}",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "ApiGatewayRestApiapisessionsessionIdGETApiPermissionMyTestStackApiGatewayRestApi9C1D269EGETapisessionsessionId892EF2B3": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "FetchSessionApiFetchSessionLambdaHandler9F61F521",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi02C6E081",
+              },
+              "/",
+              {
+                "Ref": "ApiGatewayRestApiDeploymentStagedevelopment7F493B75",
+              },
+              "/GET/api/session/*",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "ApiGatewayRestApiapisessionsessionIdGETApiPermissionTestMyTestStackApiGatewayRestApi9C1D269EGETapisessionsessionId69BFB41B": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "FetchSessionApiFetchSessionLambdaHandler9F61F521",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi02C6E081",
+              },
+              "/test-invoke-stage/GET/api/session/*",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "ApiGatewayRestApiapisessionsessionIdGETE62CD6B5": {
+      "Properties": {
+        "AuthorizationType": "COGNITO_USER_POOLS",
+        "AuthorizerId": {
+          "Ref": "ApiGatewayRestApiAuthorizerFDD36FC4",
+        },
+        "HttpMethod": "GET",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region",
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "FetchSessionApiFetchSessionLambdaHandler9F61F521",
+                    "Arn",
+                  ],
+                },
+                "/invocations",
+              ],
+            ],
+          },
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayRestApiapisessionsessionId53BA38F1",
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "ApiGatewayRestApiapisummarizeB29BD77E": {
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayRestApiapiC28A26FD",
+        },
+        "PathPart": "summarize",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "ApiGatewayRestApiapisummarizePOSTEB02D8AA": {
+      "Properties": {
+        "AuthorizationType": "COGNITO_USER_POOLS",
+        "AuthorizerId": {
+          "Ref": "ApiGatewayRestApiAuthorizerFDD36FC4",
+        },
+        "HttpMethod": "POST",
+        "Integration": {
+          "Credentials": {
+            "Fn::GetAtt": [
+              "ApiGatewayRestApiapisummarizePOSTStartSyncExecutionRoleA4C1CB7D",
+              "Arn",
+            ],
+          },
+          "IntegrationHttpMethod": "POST",
+          "IntegrationResponses": [
+            {
+              "ResponseTemplates": {
+                "application/json": "#set($inputRoot = $input.path('$'))
+#if($input.path('$.status').toString().equals("FAILED"))
+#set($context.responseOverride.status = 500)
+{
+"error": "$input.path('$.error')",
+"cause": "$input.path('$.cause')"
+}
+#else
+$input.path('$.output')
+#end",
+              },
+              "StatusCode": "200",
+            },
+            {
+              "ResponseTemplates": {
+                "application/json": "{
+            "error": "Bad request!"
+          }",
+              },
+              "SelectionPattern": "4\\d{2}",
+              "StatusCode": "400",
+            },
+            {
+              "ResponseTemplates": {
+                "application/json": ""error": $input.path('$.error')",
+              },
+              "SelectionPattern": "5\\d{2}",
+              "StatusCode": "500",
+            },
+          ],
+          "PassthroughBehavior": "NEVER",
+          "RequestTemplates": {
+            "application/json": {
+              "Fn::Join": [
+                "",
+                [
+                  "## Velocity Template used for API Gateway request mapping template
+##
+## This template forwards the request body, header, path, and querystring
+## to the execution input of the state machine.
+##
+## "@@" is used here as a placeholder for '"' to avoid using escape characters.
+
+#set($inputString = '')
+#set($includeHeaders = false)
+#set($includeQueryString = true)
+#set($includePath = true)
+#set($includeAuthorizer = false)
+#set($allParams = $input.params())
+{
+    "stateMachineArn": "",
+                  {
+                    "Ref": "summarizeSfnMyStateMachine12167942",
+                  },
+                  "",
+
+    #set($inputString = "$inputString,@@body@@: $input.body")
+
+    #if ($includeHeaders)
+        #set($inputString = "$inputString, @@header@@:{")
+        #foreach($paramName in $allParams.header.keySet())
+            #set($inputString = "$inputString @@$paramName@@: @@$util.escapeJavaScript($allParams.header.get($paramName))@@")
+            #if($foreach.hasNext)
+                #set($inputString = "$inputString,")
+            #end
+        #end
+        #set($inputString = "$inputString }")
+        
+    #end
+
+    #if ($includeQueryString)
+        #set($inputString = "$inputString, @@querystring@@:{")
+        #foreach($paramName in $allParams.querystring.keySet())
+            #set($inputString = "$inputString @@$paramName@@: @@$util.escapeJavaScript($allParams.querystring.get($paramName))@@")
+            #if($foreach.hasNext)
+                #set($inputString = "$inputString,")
+            #end
+        #end
+        #set($inputString = "$inputString }")
+    #end
+
+    #if ($includePath)
+        #set($inputString = "$inputString, @@path@@:{")
+        #foreach($paramName in $allParams.path.keySet())
+            #set($inputString = "$inputString @@$paramName@@: @@$util.escapeJavaScript($allParams.path.get($paramName))@@")
+            #if($foreach.hasNext)
+                #set($inputString = "$inputString,")
+            #end
+        #end
+        #set($inputString = "$inputString }")
+    #end
+    
+    #if ($includeAuthorizer)
+        #set($inputString = "$inputString, @@authorizer@@:{")
+        #foreach($paramName in $context.authorizer.keySet())
+            #set($inputString = "$inputString @@$paramName@@: @@$util.escapeJavaScript($context.authorizer.get($paramName))@@")
+            #if($foreach.hasNext)
+                #set($inputString = "$inputString,")
+            #end
+        #end
+        #set($inputString = "$inputString }")
+    #end
+
+    #set($requestContext = "")
+    ## Check if the request context should be included as part of the execution input
+    #if($requestContext && !$requestContext.empty)
+        #set($inputString = "$inputString,")
+        #set($inputString = "$inputString @@requestContext@@: $requestContext")
+    #end
+
+    #set($inputString = "$inputString}")
+    #set($inputString = $inputString.replaceAll("@@",'"'))
+    #set($len = $inputString.length() - 1)
+    "input": "{$util.escapeJavaScript($inputString.substring(1,$len)).replaceAll("\\\\'","'")}"
+}
+",
+                ],
+              ],
+            },
+          },
+          "Type": "AWS",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region",
+                },
+                ":states:action/StartSyncExecution",
+              ],
+            ],
+          },
+        },
+        "MethodResponses": [
+          {
+            "ResponseModels": {
+              "application/json": "Empty",
+            },
+            "StatusCode": "200",
+          },
+          {
+            "ResponseModels": {
+              "application/json": "Error",
+            },
+            "StatusCode": "400",
+          },
+          {
+            "ResponseModels": {
+              "application/json": "Error",
+            },
+            "StatusCode": "500",
+          },
+        ],
+        "ResourceId": {
+          "Ref": "ApiGatewayRestApiapisummarizeB29BD77E",
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "ApiGatewayRestApiapisummarizePOSTStartSyncExecutionRoleA4C1CB7D": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "ApiGatewayRestApiapisummarizePOSTStartSyncExecutionRoleDefaultPolicy678EEE0F": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "states:StartSyncExecution",
+              "Effect": "Allow",
+              "Resource": {
+                "Ref": "summarizeSfnMyStateMachine12167942",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "ApiGatewayRestApiapisummarizePOSTStartSyncExecutionRoleDefaultPolicy678EEE0F",
+        "Roles": [
+          {
+            "Ref": "ApiGatewayRestApiapisummarizePOSTStartSyncExecutionRoleA4C1CB7D",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "ApiGatewayRestApiapiuser3B4714FB": {
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayRestApiapiC28A26FD",
+        },
+        "PathPart": "user",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "ApiGatewayRestApiapiuseruserId20FAECE7": {
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayRestApiapiuser3B4714FB",
+        },
+        "PathPart": "{userId}",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "ApiGatewayRestApiapiuseruserIdGETApiPermissionMyTestStackApiGatewayRestApi9C1D269EGETapiuseruserId758DC5F0": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "FetchUserApiFetchUserLambdaHandler9028793C",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi02C6E081",
+              },
+              "/",
+              {
+                "Ref": "ApiGatewayRestApiDeploymentStagedevelopment7F493B75",
+              },
+              "/GET/api/user/*",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "ApiGatewayRestApiapiuseruserIdGETApiPermissionTestMyTestStackApiGatewayRestApi9C1D269EGETapiuseruserId253C4A27": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "FetchUserApiFetchUserLambdaHandler9028793C",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi02C6E081",
+              },
+              "/test-invoke-stage/GET/api/user/*",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "ApiGatewayRestApiapiuseruserIdGETEF7D679B": {
+      "Properties": {
+        "AuthorizationType": "COGNITO_USER_POOLS",
+        "AuthorizerId": {
+          "Ref": "ApiGatewayRestApiAuthorizerFDD36FC4",
+        },
+        "HttpMethod": "GET",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region",
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "FetchUserApiFetchUserLambdaHandler9028793C",
+                    "Arn",
+                  ],
+                },
+                "/invocations",
+              ],
+            ],
+          },
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayRestApiapiuseruserId20FAECE7",
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "ApiGatewayRestApiapiuseruserIdPUT9878C6AB": {
+      "Properties": {
+        "AuthorizationType": "COGNITO_USER_POOLS",
+        "AuthorizerId": {
+          "Ref": "ApiGatewayRestApiAuthorizerFDD36FC4",
+        },
+        "HttpMethod": "PUT",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region",
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "UpdateUserApiUpdateUserLambdaHandler10D5D48B",
+                    "Arn",
+                  ],
+                },
+                "/invocations",
+              ],
+            ],
+          },
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayRestApiapiuseruserId20FAECE7",
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi02C6E081",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "ApiGatewayRestApiapiuseruserIdPUTApiPermissionMyTestStackApiGatewayRestApi9C1D269EPUTapiuseruserId45646359": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "UpdateUserApiUpdateUserLambdaHandler10D5D48B",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi02C6E081",
+              },
+              "/",
+              {
+                "Ref": "ApiGatewayRestApiDeploymentStagedevelopment7F493B75",
+              },
+              "/PUT/api/user/*",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "ApiGatewayRestApiapiuseruserIdPUTApiPermissionTestMyTestStackApiGatewayRestApi9C1D269EPUTapiuseruserId356728CC": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "UpdateUserApiUpdateUserLambdaHandler10D5D48B",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi02C6E081",
+              },
+              "/test-invoke-stage/PUT/api/user/*",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "CognitoAuthPasswordlessCreateAuthChallengePasswordlessA292EAEE": {
+      "DependsOn": [
+        "CognitoAuthPasswordlessCreateAuthChallengePasswordlessServiceRoleDefaultPolicy5C0FA378",
+        "CognitoAuthPasswordlessCreateAuthChallengePasswordlessServiceRole4A2BDB60",
+      ],
+      "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "Environment": {
+          "Variables": {
+            "ALLOWED_APPLICATION_ORIGINS": "",
+            "ALLOWED_ORIGINS": "https://development.angel-make-it.com",
+            "DYNAMODB_SECRETS_TABLE": {
+              "Ref": "CognitoAuthSecretsTablePasswordless45378339",
+            },
+            "KMS_KEY_ID": "alias/Passwordless-MyTestStack",
+            "LOG_LEVEL": "INFO",
+            "MAGIC_LINK_ENABLED": "TRUE",
+            "MIN_SECONDS_BETWEEN": "60",
+            "SECONDS_UNTIL_EXPIRY": "900",
+            "SES_FROM_ADDRESS": "noreply@angel-make-it.com",
+            "SES_REGION": "",
+            "STACK_ID": {
+              "Ref": "AWS::StackId",
+            },
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "CognitoAuthPasswordlessCreateAuthChallengePasswordlessServiceRole4A2BDB60",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+        "Timeout": 5,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CognitoAuthPasswordlessCreateAuthChallengePasswordlessServiceRole4A2BDB60": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CognitoAuthPasswordlessCreateAuthChallengePasswordlessServiceRoleDefaultPolicy5C0FA378": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:ConditionCheckItem",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem",
+                "dynamodb:DescribeTable",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "CognitoAuthSecretsTablePasswordless45378339",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Ref": "AWS::NoValue",
+                },
+              ],
+            },
+            {
+              "Action": "ses:SendEmail",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":ses:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":identity/*",
+                  ],
+                ],
+              },
+            },
+            {
+              "Action": "SNS:Publish",
+              "Effect": "Allow",
+              "NotResource": "arn:aws:sns:*:*:*",
+            },
+            {
+              "Action": "kms:Sign",
+              "Condition": {
+                "StringLike": {
+                  "kms:RequestAlias": "alias/Passwordless-MyTestStack",
+                },
+              },
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":kms:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":key/*",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CognitoAuthPasswordlessCreateAuthChallengePasswordlessServiceRoleDefaultPolicy5C0FA378",
+        "Roles": [
+          {
+            "Ref": "CognitoAuthPasswordlessCreateAuthChallengePasswordlessServiceRole4A2BDB60",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CognitoAuthPasswordlessDefineAuthChallengePasswordlessB164A711": {
+      "DependsOn": [
+        "CognitoAuthPasswordlessDefineAuthChallengePasswordlessServiceRole6A7D665D",
+      ],
+      "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "Environment": {
+          "Variables": {
+            "LOG_LEVEL": "INFO",
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "CognitoAuthPasswordlessDefineAuthChallengePasswordlessServiceRole6A7D665D",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+        "Timeout": 5,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CognitoAuthPasswordlessDefineAuthChallengePasswordlessServiceRole6A7D665D": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CognitoAuthPasswordlessKmsKeyRsaPasswordless8ED73961": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "KeyPolicy": {
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "NotAction": "kms:Sign",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::",
+                      {
+                        "Ref": "AWS::AccountId",
+                      },
+                      ":root",
+                    ],
+                  ],
+                },
+              },
+              "Resource": "*",
+            },
+            {
+              "Action": "kms:Sign",
+              "Condition": {
+                "StringLike": {
+                  "kms:RequestAlias": "alias/Passwordless-MyTestStack",
+                },
+              },
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::GetAtt": [
+                    "CognitoAuthPasswordlessCreateAuthChallengePasswordlessServiceRole4A2BDB60",
+                    "Arn",
+                  ],
+                },
+              },
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":kms:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":key/*",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "KeySpec": "RSA_2048",
+        "KeyUsage": "SIGN_VERIFY",
+      },
+      "Type": "AWS::KMS::Key",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "CognitoAuthPasswordlessKmsKeyRsaPasswordlessAliasE8080EEF": {
+      "Properties": {
+        "AliasName": "alias/Passwordless-MyTestStack",
+        "TargetKeyId": {
+          "Fn::GetAtt": [
+            "CognitoAuthPasswordlessKmsKeyRsaPasswordless8ED73961",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::KMS::Alias",
+    },
+    "CognitoAuthPasswordlessPreSignupPasswordlessC79E97E2": {
+      "DependsOn": [
+        "CognitoAuthPasswordlessPreSignupPasswordlessServiceRoleB3A13B5F",
+      ],
+      "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "Environment": {
+          "Variables": {
+            "LOG_LEVEL": "INFO",
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "CognitoAuthPasswordlessPreSignupPasswordlessServiceRoleB3A13B5F",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CognitoAuthPasswordlessPreSignupPasswordlessServiceRoleB3A13B5F": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CognitoAuthPasswordlessVerifyAuthChallengeResponsePasswordlessC48F3983": {
+      "DependsOn": [
+        "CognitoAuthPasswordlessVerifyAuthChallengeResponsePasswordlessServiceRoleDefaultPolicy36DAE4E5",
+        "CognitoAuthPasswordlessVerifyAuthChallengeResponsePasswordlessServiceRoleC8836A4B",
+      ],
+      "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "Environment": {
+          "Variables": {
+            "ALLOWED_APPLICATION_ORIGINS": "",
+            "ALLOWED_ORIGINS": "https://development.angel-make-it.com",
+            "DYNAMODB_SECRETS_TABLE": {
+              "Ref": "CognitoAuthSecretsTablePasswordless45378339",
+            },
+            "LOG_LEVEL": "INFO",
+            "MAGIC_LINK_ENABLED": "TRUE",
+            "STACK_ID": {
+              "Ref": "AWS::StackId",
+            },
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "CognitoAuthPasswordlessVerifyAuthChallengeResponsePasswordlessServiceRoleC8836A4B",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs18.x",
+        "Timeout": 5,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CognitoAuthPasswordlessVerifyAuthChallengeResponsePasswordlessServiceRoleC8836A4B": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CognitoAuthPasswordlessVerifyAuthChallengeResponsePasswordlessServiceRoleDefaultPolicy36DAE4E5": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:ConditionCheckItem",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem",
+                "dynamodb:DescribeTable",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "CognitoAuthSecretsTablePasswordless45378339",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Ref": "AWS::NoValue",
+                },
+              ],
+            },
+            {
+              "Action": "kms:GetPublicKey",
+              "Condition": {
+                "StringLike": {
+                  "kms:RequestAlias": "alias/Passwordless-MyTestStack",
+                },
+              },
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":kms:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":key/*",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CognitoAuthPasswordlessVerifyAuthChallengeResponsePasswordlessServiceRoleDefaultPolicy36DAE4E5",
+        "Roles": [
+          {
+            "Ref": "CognitoAuthPasswordlessVerifyAuthChallengeResponsePasswordlessServiceRoleC8836A4B",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CognitoAuthSecretsTablePasswordless45378339": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "userNameHash",
+            "AttributeType": "B",
+          },
+        ],
+        "BillingMode": "PAY_PER_REQUEST",
+        "KeySchema": [
+          {
+            "AttributeName": "userNameHash",
+            "KeyType": "HASH",
+          },
+        ],
+        "TimeToLiveSpecification": {
+          "AttributeName": "exp",
+          "Enabled": true,
+        },
+      },
+      "Type": "AWS::DynamoDB::Table",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "CognitoAuthUserPool9F7F9231": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AccountRecoverySetting": {
+          "RecoveryMechanisms": [
+            {
+              "Name": "verified_email",
+              "Priority": 1,
+            },
+          ],
+        },
+        "AdminCreateUserConfig": {
+          "AllowAdminCreateUserOnly": false,
+        },
+        "AutoVerifiedAttributes": [
+          "email",
+        ],
+        "EmailVerificationMessage": "The verification code to your new account is {####}",
+        "EmailVerificationSubject": "Verify your new account",
+        "LambdaConfig": {
+          "CreateAuthChallenge": {
+            "Fn::GetAtt": [
+              "CognitoAuthPasswordlessCreateAuthChallengePasswordlessA292EAEE",
+              "Arn",
+            ],
+          },
+          "DefineAuthChallenge": {
+            "Fn::GetAtt": [
+              "CognitoAuthPasswordlessDefineAuthChallengePasswordlessB164A711",
+              "Arn",
+            ],
+          },
+          "PostConfirmation": {
+            "Fn::GetAtt": [
+              "CognitoAuthUserRegistrationLambdaHandler70D98CE9",
+              "Arn",
+            ],
+          },
+          "PreSignUp": {
+            "Fn::GetAtt": [
+              "CognitoAuthPasswordlessPreSignupPasswordlessC79E97E2",
+              "Arn",
+            ],
+          },
+          "VerifyAuthChallengeResponse": {
+            "Fn::GetAtt": [
+              "CognitoAuthPasswordlessVerifyAuthChallengeResponsePasswordlessC48F3983",
+              "Arn",
+            ],
+          },
+        },
+        "Policies": {
+          "PasswordPolicy": {
+            "MinimumLength": 6,
+            "RequireLowercase": true,
+            "RequireNumbers": true,
+            "RequireSymbols": false,
+            "RequireUppercase": true,
+          },
+        },
+        "Schema": [
+          {
+            "Mutable": false,
+            "Name": "email",
+            "Required": true,
+          },
+          {
+            "AttributeDataType": "String",
+            "Mutable": true,
+            "Name": "inviter",
+          },
+        ],
+        "SmsVerificationMessage": "The verification code to your new account is {####}",
+        "UserPoolName": "make-it-development-user-pool",
+        "UsernameAttributes": [
+          "email",
+        ],
+        "VerificationMessageTemplate": {
+          "DefaultEmailOption": "CONFIRM_WITH_CODE",
+          "EmailMessage": "The verification code to your new account is {####}",
+          "EmailSubject": "Verify your new account",
+          "SmsMessage": "The verification code to your new account is {####}",
+        },
+      },
+      "Type": "AWS::Cognito::UserPool",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "CognitoAuthUserPoolClient49384780": {
+      "Properties": {
+        "AllowedOAuthFlows": [
+          "implicit",
+          "code",
+        ],
+        "AllowedOAuthFlowsUserPoolClient": true,
+        "AllowedOAuthScopes": [
+          "profile",
+          "phone",
+          "email",
+          "openid",
+          "aws.cognito.signin.user.admin",
+        ],
+        "CallbackURLs": [
+          "https://example.com",
+        ],
+        "ClientName": "make-it-development-app-client",
+        "ExplicitAuthFlows": [
+          "ALLOW_CUSTOM_AUTH",
+          "ALLOW_USER_SRP_AUTH",
+          "ALLOW_REFRESH_TOKEN_AUTH",
+        ],
+        "GenerateSecret": false,
+        "SupportedIdentityProviders": [
+          "COGNITO",
+        ],
+        "UserPoolId": {
+          "Ref": "CognitoAuthUserPool9F7F9231",
+        },
+      },
+      "Type": "AWS::Cognito::UserPoolClient",
+    },
+    "CognitoAuthUserPoolCreateAuthChallengeCognito206B5005": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "CognitoAuthPasswordlessCreateAuthChallengePasswordlessA292EAEE",
+            "Arn",
+          ],
+        },
+        "Principal": "cognito-idp.amazonaws.com",
+        "SourceArn": {
+          "Fn::GetAtt": [
+            "CognitoAuthUserPool9F7F9231",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "CognitoAuthUserPoolDefineAuthChallengeCognitoD5030791": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "CognitoAuthPasswordlessDefineAuthChallengePasswordlessB164A711",
+            "Arn",
+          ],
+        },
+        "Principal": "cognito-idp.amazonaws.com",
+        "SourceArn": {
+          "Fn::GetAtt": [
+            "CognitoAuthUserPool9F7F9231",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "CognitoAuthUserPoolPostConfirmationCognito9D1FAF93": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "CognitoAuthUserRegistrationLambdaHandler70D98CE9",
+            "Arn",
+          ],
+        },
+        "Principal": "cognito-idp.amazonaws.com",
+        "SourceArn": {
+          "Fn::GetAtt": [
+            "CognitoAuthUserPool9F7F9231",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "CognitoAuthUserPoolPreSignUpCognito9E7F6E10": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "CognitoAuthPasswordlessPreSignupPasswordlessC79E97E2",
+            "Arn",
+          ],
+        },
+        "Principal": "cognito-idp.amazonaws.com",
+        "SourceArn": {
+          "Fn::GetAtt": [
+            "CognitoAuthUserPool9F7F9231",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "CognitoAuthUserPoolVerifyAuthChallengeResponseCognitoC59B85D9": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "CognitoAuthPasswordlessVerifyAuthChallengeResponsePasswordlessC48F3983",
+            "Arn",
+          ],
+        },
+        "Principal": "cognito-idp.amazonaws.com",
+        "SourceArn": {
+          "Fn::GetAtt": [
+            "CognitoAuthUserPool9F7F9231",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "CognitoAuthUserRegistrationCodeSigningConfig5736912E": {
+      "Properties": {
+        "AllowedPublishers": {
+          "SigningProfileVersionArns": [
+            {
+              "Fn::GetAtt": [
+                "CognitoAuthUserRegistrationSigningProfileE9EC55D8",
+                "ProfileVersionArn",
+              ],
+            },
+          ],
+        },
+        "CodeSigningPolicies": {
+          "UntrustedArtifactOnDeployment": "Warn",
+        },
+      },
+      "Type": "AWS::Lambda::CodeSigningConfig",
+    },
+    "CognitoAuthUserRegistrationLambdaHandler70D98CE9": {
+      "DependsOn": [
+        "CognitoAuthUserRegistrationRoleDefaultPolicy782E4203",
+        "CognitoAuthUserRegistrationRoleFAE9DC62",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "CodeSigningConfigArn": {
+          "Fn::GetAtt": [
+            "CognitoAuthUserRegistrationCodeSigningConfig5736912E",
+            "CodeSigningConfigArn",
+          ],
+        },
+        "Environment": {
+          "Variables": {
+            "USER_TABLE_NAME": {
+              "Ref": "DynamodbUserTableDynamoDBUserTable88DE52D5",
+            },
+          },
+        },
+        "FunctionName": "make-it-development-user-registration-lambda",
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "CognitoAuthUserRegistrationRoleFAE9DC62",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs20.x",
+        "Timeout": 180,
+        "TracingConfig": {
+          "Mode": "Active",
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CognitoAuthUserRegistrationLambdaHandlerLogRetention950D66FC": {
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              "/aws/lambda/",
+              {
+                "Ref": "CognitoAuthUserRegistrationLambdaHandler70D98CE9",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 30,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "CognitoAuthUserRegistrationRoleDefaultPolicy782E4203": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CognitoAuthUserRegistrationRoleDefaultPolicy782E4203",
+        "Roles": [
+          {
+            "Ref": "CognitoAuthUserRegistrationRoleFAE9DC62",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CognitoAuthUserRegistrationRoleFAE9DC62": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonDynamoDBFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AWSXrayFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "make-it-development-user-registration-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CognitoAuthUserRegistrationSigningProfileE9EC55D8": {
+      "Properties": {
+        "PlatformId": "AWSLambda-SHA384-ECDSA",
+        "SignatureValidityPeriod": {
+          "Type": "MONTHS",
+          "Value": 135,
+        },
+      },
+      "Type": "AWS::Signer::SigningProfile",
+    },
+    "CreateCognitoUserApiApiGatewaySqsRole37133EE8": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonSQSFullAccess",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "make-it-development-api-gateway-cognito-user-sqs-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CreateCognitoUserApiCreateCognitoUserCodeSigningConfigB6018586": {
+      "Properties": {
+        "AllowedPublishers": {
+          "SigningProfileVersionArns": [
+            {
+              "Fn::GetAtt": [
+                "CreateCognitoUserApiCreateCognitoUserSigningProfile999B706E",
+                "ProfileVersionArn",
+              ],
+            },
+          ],
+        },
+        "CodeSigningPolicies": {
+          "UntrustedArtifactOnDeployment": "Warn",
+        },
+      },
+      "Type": "AWS::Lambda::CodeSigningConfig",
+    },
+    "CreateCognitoUserApiCreateCognitoUserLambdaHandler8AA504E0": {
+      "DependsOn": [
+        "CreateCognitoUserApiCreateCognitoUserRoleDefaultPolicyEE7F4776",
+        "CreateCognitoUserApiCreateCognitoUserRole38273697",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "CodeSigningConfigArn": {
+          "Fn::GetAtt": [
+            "CreateCognitoUserApiCreateCognitoUserCodeSigningConfigB6018586",
+            "CodeSigningConfigArn",
+          ],
+        },
+        "Environment": {
+          "Variables": {
+            "COGNITO_USER_POOL_CLIENT_ID": {
+              "Ref": "CognitoAuthUserPoolClient49384780",
+            },
+          },
+        },
+        "FunctionName": "make-it-development-create-cognito-user-lambda",
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "CreateCognitoUserApiCreateCognitoUserRole38273697",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs20.x",
+        "Timeout": 120,
+        "TracingConfig": {
+          "Mode": "Active",
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CreateCognitoUserApiCreateCognitoUserLambdaHandlerLogRetentionD8E710ED": {
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              "/aws/lambda/",
+              {
+                "Ref": "CreateCognitoUserApiCreateCognitoUserLambdaHandler8AA504E0",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 30,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "CreateCognitoUserApiCreateCognitoUserLambdaHandlerSqsEventSourceMyTestStackCreateCognitoUserApiCreateCognitoUserQueue4532C4C94F42BC9D": {
+      "Properties": {
+        "EventSourceArn": {
+          "Fn::GetAtt": [
+            "CreateCognitoUserApiCreateCognitoUserQueue24E33336",
+            "Arn",
+          ],
+        },
+        "FunctionName": {
+          "Ref": "CreateCognitoUserApiCreateCognitoUserLambdaHandler8AA504E0",
+        },
+      },
+      "Type": "AWS::Lambda::EventSourceMapping",
+    },
+    "CreateCognitoUserApiCreateCognitoUserQueue24E33336": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "MessageRetentionPeriod": 345600,
+        "QueueName": "make-it-development-create-cognito-user-queue",
+        "VisibilityTimeout": 300,
+      },
+      "Type": "AWS::SQS::Queue",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "CreateCognitoUserApiCreateCognitoUserRole38273697": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonCognitoPowerUser",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AWSXrayFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "make-it-development-create-cognito-user-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CreateCognitoUserApiCreateCognitoUserRoleDefaultPolicyEE7F4776": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            {
+              "Action": [
+                "sqs:ReceiveMessage",
+                "sqs:ChangeMessageVisibility",
+                "sqs:GetQueueUrl",
+                "sqs:DeleteMessage",
+                "sqs:GetQueueAttributes",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CreateCognitoUserApiCreateCognitoUserQueue24E33336",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CreateCognitoUserApiCreateCognitoUserRoleDefaultPolicyEE7F4776",
+        "Roles": [
+          {
+            "Ref": "CreateCognitoUserApiCreateCognitoUserRole38273697",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CreateCognitoUserApiCreateCognitoUserSigningProfile999B706E": {
+      "Properties": {
+        "PlatformId": "AWSLambda-SHA384-ECDSA",
+        "SignatureValidityPeriod": {
+          "Type": "MONTHS",
+          "Value": 135,
+        },
+      },
+      "Type": "AWS::Signer::SigningProfile",
+    },
+    "DynamodbSessionTableDeliveryStream4F23D4B7": {
+      "Properties": {
+        "DeliveryStreamName": "make-it-development-session-firehose",
+        "DeliveryStreamType": "DirectPut",
+        "ExtendedS3DestinationConfiguration": {
+          "BucketARN": {
+            "Fn::GetAtt": [
+              "DynamodbSessionTableSessionTableStreamsBucket818EFEEB",
+              "Arn",
+            ],
+          },
+          "BufferingHints": {
+            "IntervalInSeconds": 60,
+            "SizeInMBs": 5,
+          },
+          "CloudWatchLoggingOptions": {
+            "Enabled": true,
+            "LogGroupName": {
+              "Ref": "DynamodbSessionTableFirehoseLogGroup248B8824",
+            },
+            "LogStreamName": "make-it-development-session-firehose-log-stream",
+          },
+          "CompressionFormat": "GZIP",
+          "RoleARN": {
+            "Fn::GetAtt": [
+              "DynamodbSessionTableFirehoseRole7C871CFE",
+              "Arn",
+            ],
+          },
+        },
+      },
+      "Type": "AWS::KinesisFirehose::DeliveryStream",
+    },
+    "DynamodbSessionTableDynamoDBSessionTableDEAA8812": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "SessionId",
+            "AttributeType": "S",
+          },
+        ],
+        "BillingMode": "PAY_PER_REQUEST",
+        "KeySchema": [
+          {
+            "AttributeName": "SessionId",
+            "KeyType": "HASH",
+          },
+        ],
+        "Replicas": [
+          {
+            "PointInTimeRecoverySpecification": {
+              "PointInTimeRecoveryEnabled": true,
+            },
+            "Region": {
+              "Ref": "AWS::Region",
+            },
+          },
+        ],
+        "StreamSpecification": {
+          "StreamViewType": "NEW_IMAGE",
+        },
+        "TableName": "make-it-development-session-table",
+      },
+      "Type": "AWS::DynamoDB::GlobalTable",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "DynamodbSessionTableFirehoseLogGroup248B8824": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "LogGroupName": "make-it-development-session-firehose-log-group",
+        "RetentionInDays": 30,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "DynamodbSessionTableFirehoseRole7C871CFE": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "firehose.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonS3FullAccess",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "make-it-development-session-firehose-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "DynamodbSessionTableSessionTableStreamsBucket818EFEEB": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "BucketName": "make-it-development-session-table-bucket",
+        "LifecycleConfiguration": {
+          "Rules": [
+            {
+              "ExpirationInDays": 60,
+              "Status": "Enabled",
+            },
+          ],
+        },
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "DynamodbSessionTableSessionTableStreamsCodeSigningConfigF70275BF": {
+      "Properties": {
+        "AllowedPublishers": {
+          "SigningProfileVersionArns": [
+            {
+              "Fn::GetAtt": [
+                "DynamodbSessionTableSessionTableStreamsSigningProfileF15608B1",
+                "ProfileVersionArn",
+              ],
+            },
+          ],
+        },
+        "CodeSigningPolicies": {
+          "UntrustedArtifactOnDeployment": "Warn",
+        },
+      },
+      "Type": "AWS::Lambda::CodeSigningConfig",
+    },
+    "DynamodbSessionTableSessionTableStreamsFunctionRoleD4A6191C": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonDynamoDBFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AWSXrayFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonKinesisFirehoseFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "make-it-development-session-table-streams-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "DynamodbSessionTableSessionTableStreamsFunctionRoleDefaultPolicy5A5A0FA1": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            {
+              "Action": "dynamodb:ListStreams",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "DynamodbSessionTableDynamoDBSessionTableDEAA8812",
+                  "StreamArn",
+                ],
+              },
+            },
+            {
+              "Action": [
+                "dynamodb:DescribeStream",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "DynamodbSessionTableDynamoDBSessionTableDEAA8812",
+                  "StreamArn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "DynamodbSessionTableSessionTableStreamsFunctionRoleDefaultPolicy5A5A0FA1",
+        "Roles": [
+          {
+            "Ref": "DynamodbSessionTableSessionTableStreamsFunctionRoleD4A6191C",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "DynamodbSessionTableSessionTableStreamsLambdaHandler2D20CED0": {
+      "DependsOn": [
+        "DynamodbSessionTableSessionTableStreamsFunctionRoleDefaultPolicy5A5A0FA1",
+        "DynamodbSessionTableSessionTableStreamsFunctionRoleD4A6191C",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "CodeSigningConfigArn": {
+          "Fn::GetAtt": [
+            "DynamodbSessionTableSessionTableStreamsCodeSigningConfigF70275BF",
+            "CodeSigningConfigArn",
+          ],
+        },
+        "Environment": {
+          "Variables": {
+            "DELIVERY_STREAM_NAME": {
+              "Ref": "DynamodbSessionTableDeliveryStream4F23D4B7",
+            },
+          },
+        },
+        "FunctionName": "make-it-development-session-table-streams-lambda",
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "DynamodbSessionTableSessionTableStreamsFunctionRoleD4A6191C",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs20.x",
+        "Timeout": 120,
+        "TracingConfig": {
+          "Mode": "Active",
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "DynamodbSessionTableSessionTableStreamsLambdaHandlerDynamoDBEventSourceMyTestStackDynamodbSessionTableDynamoDBSessionTableDA32DA646EAFB7B4": {
+      "Properties": {
+        "BatchSize": 100,
+        "EventSourceArn": {
+          "Fn::GetAtt": [
+            "DynamodbSessionTableDynamoDBSessionTableDEAA8812",
+            "StreamArn",
+          ],
+        },
+        "FunctionName": {
+          "Ref": "DynamodbSessionTableSessionTableStreamsLambdaHandler2D20CED0",
+        },
+        "StartingPosition": "TRIM_HORIZON",
+      },
+      "Type": "AWS::Lambda::EventSourceMapping",
+    },
+    "DynamodbSessionTableSessionTableStreamsLambdaHandlerLogRetentionF62A6B35": {
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              "/aws/lambda/",
+              {
+                "Ref": "DynamodbSessionTableSessionTableStreamsLambdaHandler2D20CED0",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 30,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "DynamodbSessionTableSessionTableStreamsSigningProfileF15608B1": {
+      "Properties": {
+        "PlatformId": "AWSLambda-SHA384-ECDSA",
+        "SignatureValidityPeriod": {
+          "Type": "MONTHS",
+          "Value": 135,
+        },
+      },
+      "Type": "AWS::Signer::SigningProfile",
+    },
+    "DynamodbUserTableDeliveryStream9F606CF1": {
+      "Properties": {
+        "DeliveryStreamName": "make-it-development-user-firehose",
+        "DeliveryStreamType": "DirectPut",
+        "ExtendedS3DestinationConfiguration": {
+          "BucketARN": {
+            "Fn::GetAtt": [
+              "DynamodbUserTableUserTableStreamsBucket72BA91BA",
+              "Arn",
+            ],
+          },
+          "BufferingHints": {
+            "IntervalInSeconds": 60,
+            "SizeInMBs": 5,
+          },
+          "CloudWatchLoggingOptions": {
+            "Enabled": true,
+            "LogGroupName": {
+              "Ref": "DynamodbUserTableFirehoseLogGroupCAF74BA2",
+            },
+            "LogStreamName": "make-it-development-user-firehose-log-stream",
+          },
+          "CompressionFormat": "GZIP",
+          "RoleARN": {
+            "Fn::GetAtt": [
+              "DynamodbUserTableFirehoseRole831C8F49",
+              "Arn",
+            ],
+          },
+        },
+      },
+      "Type": "AWS::KinesisFirehose::DeliveryStream",
+    },
+    "DynamodbUserTableDynamoDBUserTable88DE52D5": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "UserId",
+            "AttributeType": "S",
+          },
+        ],
+        "BillingMode": "PAY_PER_REQUEST",
+        "KeySchema": [
+          {
+            "AttributeName": "UserId",
+            "KeyType": "HASH",
+          },
+        ],
+        "Replicas": [
+          {
+            "PointInTimeRecoverySpecification": {
+              "PointInTimeRecoveryEnabled": true,
+            },
+            "Region": {
+              "Ref": "AWS::Region",
+            },
+          },
+        ],
+        "StreamSpecification": {
+          "StreamViewType": "NEW_IMAGE",
+        },
+        "TableName": "make-it-development-user-table",
+      },
+      "Type": "AWS::DynamoDB::GlobalTable",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "DynamodbUserTableFirehoseLogGroupCAF74BA2": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "LogGroupName": "make-it-development-user-firehose-log-group",
+        "RetentionInDays": 30,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "DynamodbUserTableFirehoseRole831C8F49": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "firehose.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonS3FullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AWSXrayFullAccess",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "make-it-development-user-firehose-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "DynamodbUserTableUserTableStreamsBucket72BA91BA": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "BucketName": "make-it-development-user-table-bucket",
+        "LifecycleConfiguration": {
+          "Rules": [
+            {
+              "ExpirationInDays": 60,
+              "Status": "Enabled",
+            },
+          ],
+        },
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "DynamodbUserTableUserTableStreamsCodeSigningConfig7B9B4280": {
+      "Properties": {
+        "AllowedPublishers": {
+          "SigningProfileVersionArns": [
+            {
+              "Fn::GetAtt": [
+                "DynamodbUserTableUserTableStreamsSigningProfile3F031CBB",
+                "ProfileVersionArn",
+              ],
+            },
+          ],
+        },
+        "CodeSigningPolicies": {
+          "UntrustedArtifactOnDeployment": "Warn",
+        },
+      },
+      "Type": "AWS::Lambda::CodeSigningConfig",
+    },
+    "DynamodbUserTableUserTableStreamsFunctionRole2A899B4B": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonDynamoDBFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AWSXrayFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonKinesisFirehoseFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "make-it-development-user-table-streams-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "DynamodbUserTableUserTableStreamsFunctionRoleDefaultPolicy361A04B8": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            {
+              "Action": "dynamodb:ListStreams",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "DynamodbUserTableDynamoDBUserTable88DE52D5",
+                  "StreamArn",
+                ],
+              },
+            },
+            {
+              "Action": [
+                "dynamodb:DescribeStream",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "DynamodbUserTableDynamoDBUserTable88DE52D5",
+                  "StreamArn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "DynamodbUserTableUserTableStreamsFunctionRoleDefaultPolicy361A04B8",
+        "Roles": [
+          {
+            "Ref": "DynamodbUserTableUserTableStreamsFunctionRole2A899B4B",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "DynamodbUserTableUserTableStreamsLambdaHandler47AE7B06": {
+      "DependsOn": [
+        "DynamodbUserTableUserTableStreamsFunctionRoleDefaultPolicy361A04B8",
+        "DynamodbUserTableUserTableStreamsFunctionRole2A899B4B",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "CodeSigningConfigArn": {
+          "Fn::GetAtt": [
+            "DynamodbUserTableUserTableStreamsCodeSigningConfig7B9B4280",
+            "CodeSigningConfigArn",
+          ],
+        },
+        "Environment": {
+          "Variables": {
+            "DELIVERY_STREAM_NAME": {
+              "Ref": "DynamodbUserTableDeliveryStream9F606CF1",
+            },
+          },
+        },
+        "FunctionName": "make-it-development-user-table-streams-lambda",
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "DynamodbUserTableUserTableStreamsFunctionRole2A899B4B",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs20.x",
+        "Timeout": 120,
+        "TracingConfig": {
+          "Mode": "Active",
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "DynamodbUserTableUserTableStreamsLambdaHandlerDynamoDBEventSourceMyTestStackDynamodbUserTableDynamoDBUserTable95AD9582D8089E66": {
+      "Properties": {
+        "BatchSize": 100,
+        "EventSourceArn": {
+          "Fn::GetAtt": [
+            "DynamodbUserTableDynamoDBUserTable88DE52D5",
+            "StreamArn",
+          ],
+        },
+        "FunctionName": {
+          "Ref": "DynamodbUserTableUserTableStreamsLambdaHandler47AE7B06",
+        },
+        "StartingPosition": "TRIM_HORIZON",
+      },
+      "Type": "AWS::Lambda::EventSourceMapping",
+    },
+    "DynamodbUserTableUserTableStreamsLambdaHandlerLogRetention27830C60": {
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              "/aws/lambda/",
+              {
+                "Ref": "DynamodbUserTableUserTableStreamsLambdaHandler47AE7B06",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 30,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "DynamodbUserTableUserTableStreamsSigningProfile3F031CBB": {
+      "Properties": {
+        "PlatformId": "AWSLambda-SHA384-ECDSA",
+        "SignatureValidityPeriod": {
+          "Type": "MONTHS",
+          "Value": 135,
+        },
+      },
+      "Type": "AWS::Signer::SigningProfile",
+    },
+    "FetchSessionApiFetchSessionCodeSigningConfig023B6968": {
+      "Properties": {
+        "AllowedPublishers": {
+          "SigningProfileVersionArns": [
+            {
+              "Fn::GetAtt": [
+                "FetchSessionApiFetchSessionSigningProfileD962C3D7",
+                "ProfileVersionArn",
+              ],
+            },
+          ],
+        },
+        "CodeSigningPolicies": {
+          "UntrustedArtifactOnDeployment": "Warn",
+        },
+      },
+      "Type": "AWS::Lambda::CodeSigningConfig",
+    },
+    "FetchSessionApiFetchSessionLambdaHandler9F61F521": {
+      "DependsOn": [
+        "FetchSessionApiFetchSessionLambdaRoleDefaultPolicy6B5E43C2",
+        "FetchSessionApiFetchSessionLambdaRole310901F3",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "CodeSigningConfigArn": {
+          "Fn::GetAtt": [
+            "FetchSessionApiFetchSessionCodeSigningConfig023B6968",
+            "CodeSigningConfigArn",
+          ],
+        },
+        "Environment": {
+          "Variables": {
+            "SESSION_TABLE_NAME": {
+              "Ref": "DynamodbSessionTableDynamoDBSessionTableDEAA8812",
+            },
+          },
+        },
+        "FunctionName": "make-it-development-fetch-session-lambda",
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "FetchSessionApiFetchSessionLambdaRole310901F3",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs20.x",
+        "Timeout": 120,
+        "TracingConfig": {
+          "Mode": "Active",
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "FetchSessionApiFetchSessionLambdaHandlerLogRetention0DC3B631": {
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              "/aws/lambda/",
+              {
+                "Ref": "FetchSessionApiFetchSessionLambdaHandler9F61F521",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 7,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "FetchSessionApiFetchSessionLambdaRole310901F3": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonDynamoDBFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AWSXrayFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "make-it-development-fetch-session-lambda-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "FetchSessionApiFetchSessionLambdaRoleDefaultPolicy6B5E43C2": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "FetchSessionApiFetchSessionLambdaRoleDefaultPolicy6B5E43C2",
+        "Roles": [
+          {
+            "Ref": "FetchSessionApiFetchSessionLambdaRole310901F3",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "FetchSessionApiFetchSessionSigningProfileD962C3D7": {
+      "Properties": {
+        "PlatformId": "AWSLambda-SHA384-ECDSA",
+        "SignatureValidityPeriod": {
+          "Type": "MONTHS",
+          "Value": 135,
+        },
+      },
+      "Type": "AWS::Signer::SigningProfile",
+    },
+    "FetchSessionsApiFetchSessionsCodeSigningConfig297E44DE": {
+      "Properties": {
+        "AllowedPublishers": {
+          "SigningProfileVersionArns": [
+            {
+              "Fn::GetAtt": [
+                "FetchSessionsApiFetchSessionsSigningProfile74115FE4",
+                "ProfileVersionArn",
+              ],
+            },
+          ],
+        },
+        "CodeSigningPolicies": {
+          "UntrustedArtifactOnDeployment": "Warn",
+        },
+      },
+      "Type": "AWS::Lambda::CodeSigningConfig",
+    },
+    "FetchSessionsApiFetchSessionsLambdaHandler15C7DA5B": {
+      "DependsOn": [
+        "FetchSessionsApiFetchSessionsLambdaRoleDefaultPolicyC0263A17",
+        "FetchSessionsApiFetchSessionsLambdaRoleF5D1D447",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "CodeSigningConfigArn": {
+          "Fn::GetAtt": [
+            "FetchSessionsApiFetchSessionsCodeSigningConfig297E44DE",
+            "CodeSigningConfigArn",
+          ],
+        },
+        "Environment": {
+          "Variables": {
+            "SESSION_TABLE_NAME": {
+              "Ref": "DynamodbSessionTableDynamoDBSessionTableDEAA8812",
+            },
+            "USER_TABLE_NAME": {
+              "Ref": "DynamodbUserTableDynamoDBUserTable88DE52D5",
+            },
+          },
+        },
+        "FunctionName": "make-it-development-fetch-sessions-lambda",
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "FetchSessionsApiFetchSessionsLambdaRoleF5D1D447",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs20.x",
+        "Timeout": 120,
+        "TracingConfig": {
+          "Mode": "Active",
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "FetchSessionsApiFetchSessionsLambdaHandlerLogRetention306D4932": {
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              "/aws/lambda/",
+              {
+                "Ref": "FetchSessionsApiFetchSessionsLambdaHandler15C7DA5B",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 7,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "FetchSessionsApiFetchSessionsLambdaRoleDefaultPolicyC0263A17": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "FetchSessionsApiFetchSessionsLambdaRoleDefaultPolicyC0263A17",
+        "Roles": [
+          {
+            "Ref": "FetchSessionsApiFetchSessionsLambdaRoleF5D1D447",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "FetchSessionsApiFetchSessionsLambdaRoleF5D1D447": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonDynamoDBFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AWSXrayFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "make-it-development-fetch-sessions-lambda-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "FetchSessionsApiFetchSessionsSigningProfile74115FE4": {
+      "Properties": {
+        "PlatformId": "AWSLambda-SHA384-ECDSA",
+        "SignatureValidityPeriod": {
+          "Type": "MONTHS",
+          "Value": 135,
+        },
+      },
+      "Type": "AWS::Signer::SigningProfile",
+    },
+    "FetchUserApiFetchUserCodeSigningConfig7812A5BF": {
+      "Properties": {
+        "AllowedPublishers": {
+          "SigningProfileVersionArns": [
+            {
+              "Fn::GetAtt": [
+                "FetchUserApiFetchUserSigningProfile9066F215",
+                "ProfileVersionArn",
+              ],
+            },
+          ],
+        },
+        "CodeSigningPolicies": {
+          "UntrustedArtifactOnDeployment": "Warn",
+        },
+      },
+      "Type": "AWS::Lambda::CodeSigningConfig",
+    },
+    "FetchUserApiFetchUserLambdaHandler9028793C": {
+      "DependsOn": [
+        "FetchUserApiFetchUserRoleDefaultPolicyD8270796",
+        "FetchUserApiFetchUserRoleFB32EBAE",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "CodeSigningConfigArn": {
+          "Fn::GetAtt": [
+            "FetchUserApiFetchUserCodeSigningConfig7812A5BF",
+            "CodeSigningConfigArn",
+          ],
+        },
+        "Environment": {
+          "Variables": {
+            "USER_TABLE_NAME": {
+              "Ref": "DynamodbUserTableDynamoDBUserTable88DE52D5",
+            },
+          },
+        },
+        "FunctionName": "make-it-development-fetch-user-lambda",
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "FetchUserApiFetchUserRoleFB32EBAE",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs20.x",
+        "Timeout": 120,
+        "TracingConfig": {
+          "Mode": "Active",
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "FetchUserApiFetchUserLambdaHandlerLogRetention7F25C843": {
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              "/aws/lambda/",
+              {
+                "Ref": "FetchUserApiFetchUserLambdaHandler9028793C",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 30,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "FetchUserApiFetchUserRoleDefaultPolicyD8270796": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "FetchUserApiFetchUserRoleDefaultPolicyD8270796",
+        "Roles": [
+          {
+            "Ref": "FetchUserApiFetchUserRoleFB32EBAE",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "FetchUserApiFetchUserRoleFB32EBAE": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonDynamoDBFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AWSXrayFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "make-it-development-fetch-user-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "FetchUserApiFetchUserSigningProfile9066F215": {
+      "Properties": {
+        "PlatformId": "AWSLambda-SHA384-ECDSA",
+        "SignatureValidityPeriod": {
+          "Type": "MONTHS",
+          "Value": 135,
+        },
+      },
+      "Type": "AWS::Signer::SigningProfile",
+    },
+    "GenerateSessionTitleApiGenerateSessionTitle1E0B67E0": {
+      "DependsOn": [
+        "GenerateSessionTitleApiGenerateSessionTitleLambdaRoleDefaultPolicy697F182C",
+        "GenerateSessionTitleApiGenerateSessionTitleLambdaRoleA26223D9",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "CodeSigningConfigArn": {
+          "Fn::GetAtt": [
+            "GenerateSessionTitleApiGenerateSessionTitleCodeSigningConfig485D2615",
+            "CodeSigningConfigArn",
+          ],
+        },
+        "Description": "make-it-development-generate-session-title-lambda",
+        "Environment": {
+          "Variables": {
+            "SESSION_TABLE_NAME": {
+              "Ref": "DynamodbSessionTableDynamoDBSessionTableDEAA8812",
+            },
+          },
+        },
+        "FunctionName": "make-it-development-generate-session-title-lambda",
+        "Handler": "generate_session_title.handler",
+        "Layers": [
+          {
+            "Ref": "LambdaLayerMyLayer6406C60B",
+          },
+        ],
+        "Role": {
+          "Fn::GetAtt": [
+            "GenerateSessionTitleApiGenerateSessionTitleLambdaRoleA26223D9",
+            "Arn",
+          ],
+        },
+        "Runtime": "python3.12",
+        "Timeout": 900,
+        "TracingConfig": {
+          "Mode": "Active",
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "GenerateSessionTitleApiGenerateSessionTitleCodeSigningConfig485D2615": {
+      "Properties": {
+        "AllowedPublishers": {
+          "SigningProfileVersionArns": [
+            {
+              "Fn::GetAtt": [
+                "GenerateSessionTitleApiGenerateSessionTitleSigningProfile24A268CC",
+                "ProfileVersionArn",
+              ],
+            },
+          ],
+        },
+        "CodeSigningPolicies": {
+          "UntrustedArtifactOnDeployment": "Warn",
+        },
+      },
+      "Type": "AWS::Lambda::CodeSigningConfig",
+    },
+    "GenerateSessionTitleApiGenerateSessionTitleLambdaRoleA26223D9": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonBedrockFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonDynamoDBFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AWSXrayFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "make-it-development-generate-session-title-lambda-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "GenerateSessionTitleApiGenerateSessionTitleLambdaRoleDefaultPolicy697F182C": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "GenerateSessionTitleApiGenerateSessionTitleLambdaRoleDefaultPolicy697F182C",
+        "Roles": [
+          {
+            "Ref": "GenerateSessionTitleApiGenerateSessionTitleLambdaRoleA26223D9",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "GenerateSessionTitleApiGenerateSessionTitleLogRetentionF64650C9": {
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              "/aws/lambda/",
+              {
+                "Ref": "GenerateSessionTitleApiGenerateSessionTitle1E0B67E0",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 30,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "GenerateSessionTitleApiGenerateSessionTitleSigningProfile24A268CC": {
+      "Properties": {
+        "PlatformId": "AWSLambda-SHA384-ECDSA",
+        "SignatureValidityPeriod": {
+          "Type": "MONTHS",
+          "Value": 135,
+        },
+      },
+      "Type": "AWS::Signer::SigningProfile",
+    },
+    "LambdaInvokeModelInvokeModelCodeSigningConfigF740C419": {
+      "Properties": {
+        "AllowedPublishers": {
+          "SigningProfileVersionArns": [
+            {
+              "Fn::GetAtt": [
+                "LambdaInvokeModelInvokeModelSigningProfileFBBE74E3",
+                "ProfileVersionArn",
+              ],
+            },
+          ],
+        },
+        "CodeSigningPolicies": {
+          "UntrustedArtifactOnDeployment": "Warn",
+        },
+      },
+      "Type": "AWS::Lambda::CodeSigningConfig",
+    },
+    "LambdaInvokeModelInvokeModelRoleA035DB9E": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonBedrockFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonDynamoDBFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/SecretsManagerReadWrite",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AWSXrayFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "make-it-development-invoke-model-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "LambdaInvokeModelInvokeModelRoleDefaultPolicy40BCBEF3": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "LambdaInvokeModelInvokeModelRoleDefaultPolicy40BCBEF3",
+        "Roles": [
+          {
+            "Ref": "LambdaInvokeModelInvokeModelRoleA035DB9E",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "LambdaInvokeModelInvokeModelSigningProfileFBBE74E3": {
+      "Properties": {
+        "PlatformId": "AWSLambda-SHA384-ECDSA",
+        "SignatureValidityPeriod": {
+          "Type": "MONTHS",
+          "Value": 135,
+        },
+      },
+      "Type": "AWS::Signer::SigningProfile",
+    },
+    "LambdaInvokeModelLambdaFunctionAllowCloudFrontServicePrincipal7344353F": {
+      "Properties": {
+        "Action": "lambda:InvokeFunctionUrl",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "LambdaInvokeModelLambdaFunctionF4E2470D",
+            "Arn",
+          ],
+        },
+        "Principal": "cloudfront.amazonaws.com",
+        "SourceArn": "arn:aws:cloudfront::471112963464:distribution/E18598BKEM3XZK",
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "LambdaInvokeModelLambdaFunctionF4E2470D": {
+      "DependsOn": [
+        "LambdaInvokeModelInvokeModelRoleDefaultPolicy40BCBEF3",
+        "LambdaInvokeModelInvokeModelRoleA035DB9E",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "CodeSigningConfigArn": {
+          "Fn::GetAtt": [
+            "LambdaInvokeModelInvokeModelCodeSigningConfigF740C419",
+            "CodeSigningConfigArn",
+          ],
+        },
+        "Environment": {
+          "Variables": {
+            "SESSION_TABLE_NAME": {
+              "Ref": "DynamodbSessionTableDynamoDBSessionTableDEAA8812",
+            },
+            "USER_TABLE_NAME": {
+              "Ref": "DynamodbUserTableDynamoDBUserTable88DE52D5",
+            },
+          },
+        },
+        "FunctionName": "make-it-development-invoke-model-lambda",
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "LambdaInvokeModelInvokeModelRoleA035DB9E",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs20.x",
+        "Timeout": 900,
+        "TracingConfig": {
+          "Mode": "Active",
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "LambdaInvokeModelLambdaFunctionFunctionUrl8DB7A6DC": {
+      "Properties": {
+        "AuthType": "AWS_IAM",
+        "InvokeMode": "RESPONSE_STREAM",
+        "TargetFunctionArn": {
+          "Fn::GetAtt": [
+            "LambdaInvokeModelLambdaFunctionF4E2470D",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Url",
+    },
+    "LambdaInvokeModelLambdaFunctionLogRetentionD3A88F28": {
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              "/aws/lambda/",
+              {
+                "Ref": "LambdaInvokeModelLambdaFunctionF4E2470D",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 7,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "LambdaLayerMyLayer6406C60B": {
+      "Properties": {
+        "CompatibleRuntimes": [
+          "python3.12",
+        ],
+        "Content": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "LayerName": "make-it-development-lambda-layer",
+      },
+      "Type": "AWS::Lambda::LayerVersion",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": {
+      "DependsOn": [
+        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+            "Arn",
+          ],
+        },
+        "Runtime": {
+          "Fn::FindInMap": [
+            "LatestNodeRuntimeMap",
+            {
+              "Ref": "AWS::Region",
+            },
+            "value",
+          ],
+        },
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "logs:PutRetentionPolicy",
+                "logs:DeleteRetentionPolicy",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+        "Roles": [
+          {
+            "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "SendSummaryApiApiGatewaySqsRoleEABE1406": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonSQSFullAccess",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "make-it-development-api-gateway-send-summary-sqs-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "SendSummaryApiSendMailLambdaHandlerF9906E8E": {
+      "DependsOn": [
+        "SendSummaryApiSendSummaryRoleDefaultPolicy0B6E99B1",
+        "SendSummaryApiSendSummaryRole89EF78FE",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "CodeSigningConfigArn": {
+          "Fn::GetAtt": [
+            "SendSummaryApiSendSummaryCodeSigningConfigF233E109",
+            "CodeSigningConfigArn",
+          ],
+        },
+        "Environment": {
+          "Variables": {
+            "SESSION_TABLE_NAME": {
+              "Ref": "DynamodbSessionTableDynamoDBSessionTableDEAA8812",
+            },
+            "USER_TABLE_NAME": {
+              "Ref": "DynamodbUserTableDynamoDBUserTable88DE52D5",
+            },
+          },
+        },
+        "FunctionName": "make-it-development-send-summary-lambda",
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "SendSummaryApiSendSummaryRole89EF78FE",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs20.x",
+        "Timeout": 120,
+        "TracingConfig": {
+          "Mode": "Active",
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "SendSummaryApiSendMailLambdaHandlerLogRetention3DAA6CA2": {
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              "/aws/lambda/",
+              {
+                "Ref": "SendSummaryApiSendMailLambdaHandlerF9906E8E",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 30,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "SendSummaryApiSendMailLambdaHandlerSqsEventSourceMyTestStackSendSummaryApiSendSummaryQueue8421091A3AA1A5FC": {
+      "Properties": {
+        "EventSourceArn": {
+          "Fn::GetAtt": [
+            "SendSummaryApiSendSummaryQueueECF57862",
+            "Arn",
+          ],
+        },
+        "FunctionName": {
+          "Ref": "SendSummaryApiSendMailLambdaHandlerF9906E8E",
+        },
+      },
+      "Type": "AWS::Lambda::EventSourceMapping",
+    },
+    "SendSummaryApiSendSummaryCodeSigningConfigF233E109": {
+      "Properties": {
+        "AllowedPublishers": {
+          "SigningProfileVersionArns": [
+            {
+              "Fn::GetAtt": [
+                "SendSummaryApiSendSummarySigningProfileBA7C104A",
+                "ProfileVersionArn",
+              ],
+            },
+          ],
+        },
+        "CodeSigningPolicies": {
+          "UntrustedArtifactOnDeployment": "Warn",
+        },
+      },
+      "Type": "AWS::Lambda::CodeSigningConfig",
+    },
+    "SendSummaryApiSendSummaryQueueECF57862": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "MessageRetentionPeriod": 345600,
+        "QueueName": "make-it-development-send-summary-queue",
+        "VisibilityTimeout": 300,
+      },
+      "Type": "AWS::SQS::Queue",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "SendSummaryApiSendSummaryRole89EF78FE": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonSESFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonDynamoDBFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AWSXrayFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "make-it-development-send-summary-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "SendSummaryApiSendSummaryRoleDefaultPolicy0B6E99B1": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            {
+              "Action": [
+                "sqs:ReceiveMessage",
+                "sqs:ChangeMessageVisibility",
+                "sqs:GetQueueUrl",
+                "sqs:DeleteMessage",
+                "sqs:GetQueueAttributes",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "SendSummaryApiSendSummaryQueueECF57862",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "SendSummaryApiSendSummaryRoleDefaultPolicy0B6E99B1",
+        "Roles": [
+          {
+            "Ref": "SendSummaryApiSendSummaryRole89EF78FE",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "SendSummaryApiSendSummarySigningProfileBA7C104A": {
+      "Properties": {
+        "PlatformId": "AWSLambda-SHA384-ECDSA",
+        "SignatureValidityPeriod": {
+          "Type": "MONTHS",
+          "Value": 135,
+        },
+      },
+      "Type": "AWS::Signer::SigningProfile",
+    },
+    "SummarizeApiSummarizeRestApi08907D9F": {
+      "Properties": {
+        "Name": "SummarizeRestApi",
+      },
+      "Type": "AWS::ApiGateway::RestApi",
+    },
+    "SummarizeApiSummarizeRestApiANY46B6511C": {
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "ANY",
+        "Integration": {
+          "Credentials": {
+            "Fn::GetAtt": [
+              "SummarizeApiSummarizeRestApiANYStartSyncExecutionRoleF21FA344",
+              "Arn",
+            ],
+          },
+          "IntegrationHttpMethod": "POST",
+          "IntegrationResponses": [
+            {
+              "ResponseTemplates": {
+                "application/json": "#set($inputRoot = $input.path('$'))
+#if($input.path('$.status').toString().equals("FAILED"))
+#set($context.responseOverride.status = 500)
+{
+"error": "$input.path('$.error')",
+"cause": "$input.path('$.cause')"
+}
+#else
+$input.path('$.output')
+#end",
+              },
+              "StatusCode": "200",
+            },
+            {
+              "ResponseTemplates": {
+                "application/json": "{
+            "error": "Bad request!"
+          }",
+              },
+              "SelectionPattern": "4\\d{2}",
+              "StatusCode": "400",
+            },
+            {
+              "ResponseTemplates": {
+                "application/json": ""error": $input.path('$.error')",
+              },
+              "SelectionPattern": "5\\d{2}",
+              "StatusCode": "500",
+            },
+          ],
+          "PassthroughBehavior": "NEVER",
+          "RequestTemplates": {
+            "application/json": {
+              "Fn::Join": [
+                "",
+                [
+                  "## Velocity Template used for API Gateway request mapping template
+##
+## This template forwards the request body, header, path, and querystring
+## to the execution input of the state machine.
+##
+## "@@" is used here as a placeholder for '"' to avoid using escape characters.
+
+#set($inputString = '')
+#set($includeHeaders = false)
+#set($includeQueryString = true)
+#set($includePath = true)
+#set($includeAuthorizer = false)
+#set($allParams = $input.params())
+{
+    "stateMachineArn": "",
+                  {
+                    "Ref": "summarizeSfnMyStateMachine12167942",
+                  },
+                  "",
+
+    #set($inputString = "$inputString,@@body@@: $input.body")
+
+    #if ($includeHeaders)
+        #set($inputString = "$inputString, @@header@@:{")
+        #foreach($paramName in $allParams.header.keySet())
+            #set($inputString = "$inputString @@$paramName@@: @@$util.escapeJavaScript($allParams.header.get($paramName))@@")
+            #if($foreach.hasNext)
+                #set($inputString = "$inputString,")
+            #end
+        #end
+        #set($inputString = "$inputString }")
+        
+    #end
+
+    #if ($includeQueryString)
+        #set($inputString = "$inputString, @@querystring@@:{")
+        #foreach($paramName in $allParams.querystring.keySet())
+            #set($inputString = "$inputString @@$paramName@@: @@$util.escapeJavaScript($allParams.querystring.get($paramName))@@")
+            #if($foreach.hasNext)
+                #set($inputString = "$inputString,")
+            #end
+        #end
+        #set($inputString = "$inputString }")
+    #end
+
+    #if ($includePath)
+        #set($inputString = "$inputString, @@path@@:{")
+        #foreach($paramName in $allParams.path.keySet())
+            #set($inputString = "$inputString @@$paramName@@: @@$util.escapeJavaScript($allParams.path.get($paramName))@@")
+            #if($foreach.hasNext)
+                #set($inputString = "$inputString,")
+            #end
+        #end
+        #set($inputString = "$inputString }")
+    #end
+    
+    #if ($includeAuthorizer)
+        #set($inputString = "$inputString, @@authorizer@@:{")
+        #foreach($paramName in $context.authorizer.keySet())
+            #set($inputString = "$inputString @@$paramName@@: @@$util.escapeJavaScript($context.authorizer.get($paramName))@@")
+            #if($foreach.hasNext)
+                #set($inputString = "$inputString,")
+            #end
+        #end
+        #set($inputString = "$inputString }")
+    #end
+
+    #set($requestContext = "")
+    ## Check if the request context should be included as part of the execution input
+    #if($requestContext && !$requestContext.empty)
+        #set($inputString = "$inputString,")
+        #set($inputString = "$inputString @@requestContext@@: $requestContext")
+    #end
+
+    #set($inputString = "$inputString}")
+    #set($inputString = $inputString.replaceAll("@@",'"'))
+    #set($len = $inputString.length() - 1)
+    "input": "{$util.escapeJavaScript($inputString.substring(1,$len)).replaceAll("\\\\'","'")}"
+}
+",
+                ],
+              ],
+            },
+          },
+          "Type": "AWS",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region",
+                },
+                ":states:action/StartSyncExecution",
+              ],
+            ],
+          },
+        },
+        "MethodResponses": [
+          {
+            "ResponseModels": {
+              "application/json": "Empty",
+            },
+            "StatusCode": "200",
+          },
+          {
+            "ResponseModels": {
+              "application/json": "Error",
+            },
+            "StatusCode": "400",
+          },
+          {
+            "ResponseModels": {
+              "application/json": "Error",
+            },
+            "StatusCode": "500",
+          },
+        ],
+        "ResourceId": {
+          "Fn::GetAtt": [
+            "SummarizeApiSummarizeRestApi08907D9F",
+            "RootResourceId",
+          ],
+        },
+        "RestApiId": {
+          "Ref": "SummarizeApiSummarizeRestApi08907D9F",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "SummarizeApiSummarizeRestApiANYStartSyncExecutionRoleDefaultPolicy75A07AAF": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "states:StartSyncExecution",
+              "Effect": "Allow",
+              "Resource": {
+                "Ref": "summarizeSfnMyStateMachine12167942",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "SummarizeApiSummarizeRestApiANYStartSyncExecutionRoleDefaultPolicy75A07AAF",
+        "Roles": [
+          {
+            "Ref": "SummarizeApiSummarizeRestApiANYStartSyncExecutionRoleF21FA344",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "SummarizeApiSummarizeRestApiANYStartSyncExecutionRoleF21FA344": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "SummarizeApiSummarizeRestApiAccount1D140744": {
+      "DeletionPolicy": "Retain",
+      "DependsOn": [
+        "SummarizeApiSummarizeRestApi08907D9F",
+      ],
+      "Properties": {
+        "CloudWatchRoleArn": {
+          "Fn::GetAtt": [
+            "SummarizeApiSummarizeRestApiCloudWatchRoleA6F16AE3",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::ApiGateway::Account",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "SummarizeApiSummarizeRestApiCloudWatchRoleA6F16AE3": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "SummarizeApiSummarizeRestApiDeploymentC2E9733Cb840ac3865a8d3e4eefceecc7c9fd8c8": {
+      "DependsOn": [
+        "SummarizeApiSummarizeRestApiANY46B6511C",
+      ],
+      "Properties": {
+        "Description": "Automatically created by the RestApi construct",
+        "RestApiId": {
+          "Ref": "SummarizeApiSummarizeRestApi08907D9F",
+        },
+      },
+      "Type": "AWS::ApiGateway::Deployment",
+    },
+    "SummarizeApiSummarizeRestApiDeploymentStageprodA67406ED": {
+      "DependsOn": [
+        "SummarizeApiSummarizeRestApiAccount1D140744",
+      ],
+      "Properties": {
+        "DeploymentId": {
+          "Ref": "SummarizeApiSummarizeRestApiDeploymentC2E9733Cb840ac3865a8d3e4eefceecc7c9fd8c8",
+        },
+        "RestApiId": {
+          "Ref": "SummarizeApiSummarizeRestApi08907D9F",
+        },
+        "StageName": "prod",
+      },
+      "Type": "AWS::ApiGateway::Stage",
+    },
+    "UpdateUserApiFetchSessionLambdaRoleD7122E4A": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonDynamoDBFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AWSXrayFullAccess",
+              ],
+            ],
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "make-it-development-update-user-lambda-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "UpdateUserApiFetchSessionLambdaRoleDefaultPolicy3098976E": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "UpdateUserApiFetchSessionLambdaRoleDefaultPolicy3098976E",
+        "Roles": [
+          {
+            "Ref": "UpdateUserApiFetchSessionLambdaRoleD7122E4A",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "UpdateUserApiFetchUserSigningProfileA0E29E57": {
+      "Properties": {
+        "PlatformId": "AWSLambda-SHA384-ECDSA",
+        "SignatureValidityPeriod": {
+          "Type": "MONTHS",
+          "Value": 135,
+        },
+      },
+      "Type": "AWS::Signer::SigningProfile",
+    },
+    "UpdateUserApiUpdateUserCodeSigningConfigBE501F19": {
+      "Properties": {
+        "AllowedPublishers": {
+          "SigningProfileVersionArns": [
+            {
+              "Fn::GetAtt": [
+                "UpdateUserApiFetchUserSigningProfileA0E29E57",
+                "ProfileVersionArn",
+              ],
+            },
+          ],
+        },
+        "CodeSigningPolicies": {
+          "UntrustedArtifactOnDeployment": "Warn",
+        },
+      },
+      "Type": "AWS::Lambda::CodeSigningConfig",
+    },
+    "UpdateUserApiUpdateUserLambdaHandler10D5D48B": {
+      "DependsOn": [
+        "UpdateUserApiFetchSessionLambdaRoleDefaultPolicy3098976E",
+        "UpdateUserApiFetchSessionLambdaRoleD7122E4A",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+        },
+        "CodeSigningConfigArn": {
+          "Fn::GetAtt": [
+            "UpdateUserApiUpdateUserCodeSigningConfigBE501F19",
+            "CodeSigningConfigArn",
+          ],
+        },
+        "Environment": {
+          "Variables": {
+            "USER_TABLE_NAME": {
+              "Ref": "DynamodbUserTableDynamoDBUserTable88DE52D5",
+            },
+          },
+        },
+        "FunctionName": "make-it-development-update-user-lambda",
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "UpdateUserApiFetchSessionLambdaRoleD7122E4A",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs20.x",
+        "Timeout": 120,
+        "TracingConfig": {
+          "Mode": "Active",
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "UpdateUserApiUpdateUserLambdaHandlerLogRetentionB14BB2DF": {
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              "/aws/lambda/",
+              {
+                "Ref": "UpdateUserApiUpdateUserLambdaHandler10D5D48B",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 30,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "generateSessionTitleSfnMyStateMachine581364F9": {
+      "DeletionPolicy": "Delete",
+      "DependsOn": [
+        "generateSessionTitleSfnMyStateMachineRoleDefaultPolicy59531552",
+        "generateSessionTitleSfnMyStateMachineRole52563AC4",
+      ],
+      "Properties": {
+        "DefinitionString": {
+          "Fn::Join": [
+            "",
+            [
+              "{"StartAt":"Convert Chat History to String","States":{"Convert Chat History to String":{"Type":"Pass","ResultPath":"$.passExchangeResult","Parameters":{"sessionHistory.$":"States.Format('{}', $.body.sessionHistory[0:])"},"Next":"Prompt Model"},"Prompt Model":{"Next":"DynamoDB UpdateItem","Type":"Task","ResultPath":"$.bedrockResult","Resource":"arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":states:::bedrock:invokeModel","Parameters":{"ModelId":"arn:aws:bedrock:ap-northeast-1::foundation-model/anthropic.claude-3-5-sonnet-20240620-v1:0","Body":{"anthropic_version":"bedrock-2023-05-31","max_tokens":200,"system":"12文字以内で、この質問に対するタイトルを生成してください。","messages":[{"role":"user","content":[{"type":"text","text.$":"$.passExchangeResult.sessionHistory"}]}]}}},"DynamoDB UpdateItem":{"End":true,"Type":"Task","OutputPath":"$.bedrockResult.Body.content[0].text","ResultPath":"$.dynamodbUpdateItemResult","Resource":"arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":states:::dynamodb:updateItem","Parameters":{"Key":{"SessionId":{"S.$":"$.body.sessionId"}},"TableName":"make-it-development-session-table","ExpressionAttributeValues":{":session_title":{"S.$":"$.bedrockResult.Body.content[0].text"}},"UpdateExpression":"SET SessionTitle = :session_title"}}},"TimeoutSeconds":300}",
+            ],
+          ],
+        },
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "generateSessionTitleSfnMyStateMachineRole52563AC4",
+            "Arn",
+          ],
+        },
+        "StateMachineName": "make-it-development-generate-session-title-sfn",
+        "StateMachineType": "EXPRESS",
+      },
+      "Type": "AWS::StepFunctions::StateMachine",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "generateSessionTitleSfnMyStateMachineRole52563AC4": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "states.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "generateSessionTitleSfnMyStateMachineRoleDefaultPolicy59531552": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "bedrock:InvokeModel",
+              "Effect": "Allow",
+              "Resource": "arn:aws:bedrock:ap-northeast-1::foundation-model/anthropic.claude-3-5-sonnet-20240620-v1:0",
+            },
+            {
+              "Action": "dynamodb:UpdateItem",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":dynamodb:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":table/make-it-development-session-table",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "generateSessionTitleSfnMyStateMachineRoleDefaultPolicy59531552",
+        "Roles": [
+          {
+            "Ref": "generateSessionTitleSfnMyStateMachineRole52563AC4",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "summarizeSfnMyStateMachine12167942": {
+      "DeletionPolicy": "Delete",
+      "DependsOn": [
+        "summarizeSfnMyStateMachineRoleDefaultPolicy7F63FD62",
+        "summarizeSfnMyStateMachineRole1191E787",
+      ],
+      "Properties": {
+        "DefinitionString": {
+          "Fn::Join": [
+            "",
+            [
+              "{"StartAt":"DynamoDB GetItem","States":{"DynamoDB GetItem":{"Next":"Convert Chat History to String","Type":"Task","ResultPath":"$.getChatHistoryResult","ResultSelector":{"chatHistory.$":"$.Item.History.L[0:]"},"Resource":"arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":states:::dynamodb:getItem","Parameters":{"Key":{"SessionId":{"S.$":"$.body.sessionId"}},"TableName":"make-it-development-session-table","ConsistentRead":false}},"Convert Chat History to String":{"Type":"Pass","ResultPath":"$.getChatHistoryResult","Parameters":{"chatHistory.$":"States.Format('{}', $.getChatHistoryResult.chatHistory[0:])"},"Next":"Incorporate Chat History into Prompt"},"Incorporate Chat History into Prompt":{"Type":"Pass","ResultPath":"$.createPromptResult","Parameters":{"prompt.$":"States.Format('\\n\\nHuman: # 指示\\n日本語で回答してください。\\n会話履歴に示した AI と 人間のやり取りを要約し、サマリーレポートを出力してください。\\n質問者が何を理解していて、何を理解していないのかを整理してください。\\n会話の中に質問者の使用している端末などの固有名詞が出現した場合には、箇条書きで出力してください。\\n会話履歴内でやり取りされている問題に対して、解決策になり得ることがあれば出力してください。\\n\\n会話履歴内に出現した URL を以下3行のフォーマットに合わせて末尾に出力してください。\\n## 参考になるサイト\\n- https://example.com\\n- https://wikipedia.com\\n\\n# 過去の会話履歴\\n {} \\n\\nAssistant:', $.getChatHistoryResult.chatHistory)"},"Next":"Prompt Model"},"Prompt Model":{"Next":"DynamoDB UpdateItem","Type":"Task","ResultPath":"$.bedrockSummarizeResult","ResultSelector":{"summarizedText.$":"$.Body.content[0].text"},"Resource":"arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":states:::bedrock:invokeModel","Parameters":{"ModelId":"arn:aws:bedrock:ap-northeast-1::foundation-model/anthropic.claude-3-5-sonnet-20240620-v1:0","Body":{"anthropic_version":"bedrock-2023-05-31","max_tokens":4098,"messages":[{"role":"user","content":[{"type":"text","text.$":"$.createPromptResult.prompt"}]}]}}},"DynamoDB UpdateItem":{"End":true,"Type":"Task","OutputPath":"$.bedrockSummarizeResult","ResultPath":"$.dynamodbUpdateItemResult","Resource":"arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":states:::dynamodb:updateItem","Parameters":{"Key":{"SessionId":{"S.$":"$.body.sessionId"}},"TableName":"make-it-development-session-table","ExpressionAttributeValues":{":session_summary":{"S.$":"$.bedrockSummarizeResult.summarizedText"}},"UpdateExpression":"SET SessionSummary = :session_summary"}}},"TimeoutSeconds":300}",
+            ],
+          ],
+        },
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "summarizeSfnMyStateMachineRole1191E787",
+            "Arn",
+          ],
+        },
+        "StateMachineName": "make-it-development-summarize-sfn",
+        "StateMachineType": "EXPRESS",
+      },
+      "Type": "AWS::StepFunctions::StateMachine",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "summarizeSfnMyStateMachineRole1191E787": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "states.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "summarizeSfnMyStateMachineRoleDefaultPolicy7F63FD62": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "dynamodb:GetItem",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":dynamodb:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":table/make-it-development-session-table",
+                  ],
+                ],
+              },
+            },
+            {
+              "Action": "bedrock:InvokeModel",
+              "Effect": "Allow",
+              "Resource": "arn:aws:bedrock:ap-northeast-1::foundation-model/anthropic.claude-3-5-sonnet-20240620-v1:0",
+            },
+            {
+              "Action": "dynamodb:UpdateItem",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":dynamodb:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":table/make-it-development-session-table",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "summarizeSfnMyStateMachineRoleDefaultPolicy7F63FD62",
+        "Roles": [
+          {
+            "Ref": "summarizeSfnMyStateMachineRole1191E787",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;

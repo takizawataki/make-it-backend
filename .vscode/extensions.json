@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens",
+    "gruntfuggly.todo-tree",
+    "esbenp.prettier-vscode",
+    "ms-python.black-formatter",
+    "ms-python.flake8",
+    "ms-python.vscode-pylance",
+    "ms-python.isort",
+    "dbaeumer.vscode-eslint"
+  ]
+}

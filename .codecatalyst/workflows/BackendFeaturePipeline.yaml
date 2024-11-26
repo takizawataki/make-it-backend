@@ -1,0 +1,76 @@
+Name: BackendFeaturePipeline
+SchemaVersion: '1.0'
+
+# Optional - Set automatic triggers.
+Triggers:
+  - Type: PULLREQUEST
+    Branches:
+      - staging
+    Events:
+      - REVISION
+
+# Required - Define action configurations.
+Actions:
+  #  CdkBootstrap:
+  #    # Identifies the action. Do not modify this value.
+  #    Identifier: aws/cdk-bootstrap@v1.1.0
+  #    # Required; You can use an environment to access AWS resources.
+  #    Environment:
+  #      Name: Angel2024-Account
+  #    # Specifies the source and/or artifacts to pass to the action as input.
+  #    Inputs:
+  #      # Optional
+  #      Sources:
+  #        - WorkflowSource # This specifies that the action requires this Workflow as a source
+  #    Compute:
+  #      Type: Lambda
+  #    Configuration:
+  #      Region: ap-northeast-1
+  #      CdkCliVersion: 2.149.0
+  CdkDeploy:
+    # Identifies the action. Do not modify this value.
+    Identifier: aws/cdk-deploy@v1.2.0
+    # Required; You can use an environment to access AWS resources.
+    Environment:
+      Name: Angel2024-Account
+    # Specifies the source and/or artifacts to pass to the action as input.
+    Inputs:
+      # Optional
+      Sources:
+        - WorkflowSource # This specifies that the action requires this Workflow as a source
+    Compute:
+      Type: EC2 # Defines the action's properties.
+    Configuration:
+      StackName: MakeIt-${WorkflowSource.BranchName}
+      Region: ap-northeast-1
+      CdkCliVersion: 2.149.0
+      Context: '{"branch":"${WorkflowSource.BranchName}"}'
+    DependsOn:
+      - CdkSnapshotTest
+  CdkSnapshotTest:
+    # Identifies the action. Do not modify this value.
+    Identifier: aws/managed-test@v1.0.0
+    # Specifies the source and/or artifacts to pass to the action as input.
+    Inputs:
+      # Optional
+      Sources:
+        - WorkflowSource # This specifies that the action requires this Workflow as a source
+    Outputs:
+      # Optional; Automatically discover reports for popular test frameworks
+      AutoDiscoverReports:
+        Enabled: true
+        # Use as prefix for the report files
+        ReportNamePrefix: rpt
+    # Defines the action's properties.
+    Configuration:
+      # Required - Steps are sequential instructions that run shell commands
+      Steps:
+        - Run: npm install
+        - Run: npm test
+      Container:
+        Registry: CODECATALYST
+        Image: CodeCatalystLinux_x86_64:2024_03
+    Compute:
+      Type: EC2
+#    DependsOn:
+#      - CdkBootstrap

@@ -1,0 +1,74 @@
+Name: BackendStagingPipeline
+SchemaVersion: '1.0'
+
+# Optional - Set automatic triggers.
+Triggers:
+  - Type: Push
+    Branches:
+      - staging
+
+# Required - Define action configurations.
+Actions:
+  AWSCDKDeploy:
+    # Identifies the action. Do not modify this value.
+    Identifier: aws/cdk-deploy@v1.2.0
+    # Required; You can use an environment to access AWS resources.
+    Environment:
+      Name: ANGEL2024AccountStg
+    # Specifies the source and/or artifacts to pass to the action as input.
+    Inputs:
+      # Optional
+      Sources:
+        - WorkflowSource # This specifies that the action requires this Workflow as a source
+    Compute:
+      Type: EC2 # Defines the action's properties.
+    Configuration:
+      StackName: MakeIt-${WorkflowSource.BranchName}
+      Region: ap-northeast-1
+      CdkCliVersion: 2.149.0
+      Context: '{"branch":"${WorkflowSource.BranchName}"}'
+    DependsOn:
+      - CdkSnapshotTest
+  ScanWithAmazonCodeGuruSecurity:
+    # Identifies the action. Do not modify this value.
+    Identifier: codecatalyst-labs/scan-with-codeguru-security@v1.1.0
+    # Required; You can use an environment to access AWS resources.
+    Environment:
+      Name: ANGEL2024AccountStg
+    # Specifies the source and/or artifacts to pass to the action as input.
+    Inputs:
+      # Optional
+      Sources:
+        - WorkflowSource # This specifies that the action requires this Workflow as a source
+    Compute:
+      Type: Lambda
+    Configuration:
+      GenerateReport: true
+      AWSRegion: ap-northeast-1
+      IncludeQualityScan: true
+      Path: .
+  CdkSnapshotTest:
+    # Identifies the action. Do not modify this value.
+    Identifier: aws/managed-test@v1.0.0
+    # Specifies the source and/or artifacts to pass to the action as input.
+    Inputs:
+      # Optional
+      Sources:
+        - WorkflowSource # This specifies that the action requires this Workflow as a source
+    Outputs:
+      # Optional; Automatically discover reports for popular test frameworks
+      AutoDiscoverReports:
+        Enabled: true
+        # Use as prefix for the report files
+        ReportNamePrefix: rpt
+    # Defines the action's properties.
+    Configuration:
+      # Required - Steps are sequential instructions that run shell commands
+      Steps:
+        - Run: npm install
+        - Run: npm run test:staging
+      Container:
+        Registry: CODECATALYST
+        Image: CodeCatalystLinux_x86_64:2024_03
+    Compute:
+      Type: EC2

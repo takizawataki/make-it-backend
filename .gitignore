@@ -1,0 +1,13 @@
+*.js
+!jest.config.js
+!snapshotResolver.js
+*.d.ts
+node_modules
+**/__pycache__/**
+.venv
+.npmrc
+!awslambda.d.ts
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out

@@ -1,0 +1,29 @@
+{
+  "cSpell.words": [
+    "awslambda",
+    "BKEM",
+    "boto",
+    "botocore",
+    "GNRSO",
+    "langchain",
+    "langgraph",
+    "passwordless",
+    "sesv",
+    "SQMU",
+    "streamify",
+    "Tavily",
+    "unmarshall"
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "isort.args": ["--profile", "black"],
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "python.analysis.typeCheckingMode": "basic"
+}
